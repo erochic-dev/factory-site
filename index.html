@@ -25,17 +25,24 @@
     <nav>
       <a href="#how">How</a>
       <a href="#crew">Crew</a>
+      <a class="play" href="demo.html">Play</a>
     </nav>
   </header>
 
   <main>
     <section id="hero" class="hero">
-      <p class="eyebrow">EroChic Productions</p>
-      <h1>Best bot software factory in the known universe. You got an idea we deliver the most stunning website !!</h1>
-      <p class="sub">Five agents. Zero committees. Idea in, live&nbsp;URL&nbsp;out.</p>
-      <div class="ctas">
-        <a class="btn primary" href="mailto:erochic.net@gmail.com?subject=Factory%20idea">Bring an idea</a>
-        <a class="btn ghost" href="#crew">Meet the factory</a>
+      <div class="hero-stage">
+        <canvas id="core" aria-hidden="true"></canvas>
+        <div class="hero-copy">
+          <p class="eyebrow">EroChic Productions</p>
+          <h1>Best bot software factory in the known universe. You got an idea we deliver the most stunning website !!</h1>
+          <p class="sub">Five agents. Zero committees. Idea in, live&nbsp;URL&nbsp;out.</p>
+          <div class="ctas">
+            <a class="btn primary" href="mailto:erochic.net@gmail.com?subject=Factory%20idea">Bring an idea</a>
+            <a class="btn ghost" href="#crew">Meet the factory</a>
+            <a class="btn play" href="demo.html">Play the factory</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -50,7 +57,7 @@
         <li>
           <span class="n">02</span>
           <h3>We spec, architect, build, test</h3>
-          <p>PM, FA, Archi, Dev, TST. In that order. In hours, not quarters.</p>
+          <p>PM → FA → Dez + Archi → Dev → TST. In that order. In hours, not quarters.</p>
         </li>
         <li>
           <span class="n">03</span>
@@ -72,6 +79,11 @@
           <p class="role">Functional analyst</p>
           <h3>FA</h3>
           <p>Turns “make it slap” into a spec you can build.</p>
+        </li>
+        <li>
+          <p class="role">Visual designer</p>
+          <h3>Dez</h3>
+          <p>Locks the look so leftover cards never ship.</p>
         </li>
         <li>
           <p class="role">IT architect</p>
@@ -97,5 +109,6 @@
     <a class="btn primary" href="mailto:erochic.net@gmail.com?subject=Factory%20idea">Bring an idea</a>
     <p class="fine">© EroChic Factory · Best in the known universe</p>
   </footer>
+  <script type="module" src="js/core.js"></script>
 </body>
 </html>

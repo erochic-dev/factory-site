@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Idea Runner — EroChic Factory</title>
+  <meta name="description" content="Catch the idea. Dodge the committee. Ship the URL." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="demo-body crt">
+  <div class="hud" id="hud">
+    <a class="logo" href="index.html">FACTORY</a>
+    <span>IDEAS <span id="ideas">0</span>/7</span>
+    <span class="hits">HITS <span id="hits">0</span>/3</span>
+  </div>
+
+  <canvas id="game" aria-label="Idea Runner"></canvas>
+  <p class="tagline">Catch the idea. Dodge the committee. Ship the URL.</p>
+
+  <div class="run-wrap" id="runWrap">
+    <button class="btn primary" id="runBtn" type="button">Run it</button>
+  </div>
+  <div class="touch" id="touch">
+    <button type="button" id="tapL" aria-label="Lane left">L</button>
+    <button type="button" id="tapR" aria-label="Lane right">R</button>
+  </div>
+
+  <div class="boot" id="boot">
+    <p class="scan">FACTORY OS v2 · SCANNING<br>VOIDLINE · IDEA RUNNER</p>
+  </div>
+
+  <div class="banner win hidden" id="win">
+    <h2>Shipped. Live URL out.</h2>
+    <div class="ctas" style="justify-content:center">
+      <a class="btn primary" href="mailto:erochic.net@gmail.com?subject=Factory%20idea">Bring an idea</a>
+      <a class="btn ghost" href="index.html">Back to factory</a>
+    </div>
+  </div>
+
+  <div class="banner lose hidden" id="lose">
+    <h2>A committee caught you.</h2>
+    <div class="ctas" style="justify-content:center">
+      <button class="btn primary" id="retry" type="button">Run it back</button>
+    </div>
+  </div>
+
+  <div class="nowebgl hidden" id="nowebgl">
+    <div>
+      <h2>3D needs WebGL. The rest of the factory still slaps.</h2>
+      <a class="btn primary" href="index.html">Back to factory</a>
+    </div>
+  </div>
+
+  <script type="module" src="js/runner.js"></script>
+</body>
+</html>
