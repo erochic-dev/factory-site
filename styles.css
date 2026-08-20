@@ -1,0 +1,181 @@
+:root {
+  --bg: #07070a;
+  --ink: #f4f1ea;
+  --muted: #b7b3a8;
+  --lime: #d6ff3f;
+  --hot: #ff3d8a;
+  --card: #12121a;
+  --line: #2a2a36;
+  --max: 68rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--lime);
+  color: #111;
+  padding: 0.5rem 1rem;
+}
+.skip:focus { left: 0.5rem; top: 0.5rem; z-index: 20; }
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.logo {
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  color: var(--lime);
+  font-size: 0.85rem;
+}
+.nav nav { display: flex; gap: 1.1rem; }
+.nav a { color: var(--ink); text-decoration: none; font-weight: 600; }
+.nav nav a:hover { color: var(--lime); }
+
+.hero, .how, .crew, .foot {
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+}
+.hero { padding: 3.2rem 0 4rem; }
+.eyebrow {
+  margin: 0 0 0.8rem;
+  color: var(--hot);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 4.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.sub {
+  margin: 1.1rem 0 1.6rem;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  color: var(--muted);
+  max-width: 32rem;
+}
+.ctas, .foot { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.15rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+.btn.primary { background: var(--lime); color: #111; }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.ghost { border-color: var(--ink); color: var(--ink); }
+.btn.ghost:hover { border-color: var(--lime); color: var(--lime); }
+
+.how { padding: 1rem 0 3.5rem; }
+.how h2, .crew h2 {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  letter-spacing: -0.03em;
+  margin: 0 0 1.4rem;
+}
+.how ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+.how li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  padding: 1.1rem 1.15rem 1.2rem;
+}
+.n {
+  display: block;
+  color: var(--lime);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+}
+.how h3, .cards h3 { margin: 0 0 0.35rem; font-size: 1.15rem; }
+.how p, .cards p { margin: 0; color: var(--muted); }
+
+.crew { padding: 0 0 3.5rem; }
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.cards li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  padding: 1.1rem 1.15rem 1.25rem;
+  border-top: 3px solid var(--lime);
+}
+.cards li:nth-child(2) { border-top-color: var(--hot); }
+.cards li:nth-child(3) { border-top-color: #4de1ff; }
+.cards li:nth-child(4) { border-top-color: var(--lime); }
+.cards li:nth-child(5) { border-top-color: #ffb020; }
+.role {
+  margin: 0 0 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.foot {
+  padding: 2.2rem 0 3rem;
+  border-top: 1px solid var(--line);
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.foot-line {
+  margin: 0;
+  font-size: clamp(1.4rem, 5vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+.fine { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.85rem; }
+
+@media (min-width: 720px) {
+  .how ol { grid-template-columns: repeat(3, 1fr); }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .cards li:last-child { grid-column: 1 / -1; }
+}
+@media (min-width: 980px) {
+  .cards { grid-template-columns: repeat(5, 1fr); }
+  .cards li:last-child { grid-column: auto; }
+  .hero { padding-top: 4.5rem; }
+}
