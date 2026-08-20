@@ -54,6 +54,7 @@ body {
 .nav a { color: var(--ink); text-decoration: none; font-weight: 600; }
 .nav nav a:hover { color: var(--lime); }
 
+#hero, #how, #crew { scroll-margin-top: 64px; }
 .hero, .how, .crew, .foot {
   width: min(100% - 2rem, var(--max));
   margin-inline: auto;
