@@ -26,6 +26,7 @@ async function boot() {
 
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 80);
   camera.position.set(0.6, 0.35, 7.2);
+  let coreX = 0;
 
   const key = new THREE.PointLight(0x9b5cff, 18, 24);
   key.position.set(4, 2, 4);
@@ -73,6 +74,8 @@ async function boot() {
     renderer.setSize(w, h, false);
     camera.aspect = w / Math.max(h, 1);
     camera.updateProjectionMatrix();
+    coreX = window.innerWidth >= 900 ? 2.4 : 0;
+    nucleus.position.x = coreX;
   }
   resize();
   window.addEventListener("resize", resize);
@@ -90,7 +93,7 @@ async function boot() {
     nodes.forEach((n, i) => {
       const a = n.userData.phase + t * 0.55;
       const r = 2.35 + Math.sin(t * 0.7 + i) * 0.12;
-      n.position.set(Math.cos(a) * r, Math.sin(a * 0.9) * 1.05, Math.sin(a) * r * 0.55);
+      n.position.set(coreX + Math.cos(a) * r, Math.sin(a * 0.9) * 1.05, Math.sin(a) * r * 0.55);
     });
     key.position.set(3.5 + pointer.x * 2.5, 1.5 + pointer.y * 2, 4);
     renderer.render(scene, camera);

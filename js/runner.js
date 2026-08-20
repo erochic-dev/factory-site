@@ -36,8 +36,8 @@ async function bootGame() {
   scene.fog = new THREE.Fog(0x050508, 8, 42);
 
   const camera = new THREE.OrthographicCamera(-8, 8, 12, -4, 0.1, 80);
-  camera.position.set(0, 11, 8);
-  camera.lookAt(0, 0, -6);
+  camera.position.set(0, 13, 10);
+  camera.lookAt(0, 0, -5);
   camera.rotation.z = 0;
 
   scene.add(new THREE.AmbientLight(0x4de1ff, 0.35));
@@ -71,15 +71,25 @@ async function bootGame() {
   scene.add(floor);
 
   const lanes = [-2, 0, 2];
-  const playerMat = new THREE.MeshStandardMaterial({
-    color: 0xd6ff3f,
-    emissive: 0xd6ff3f,
-    emissiveIntensity: 2,
-  });
-  const player = new THREE.Mesh(new THREE.ConeGeometry(0.45, 1.1, 3), playerMat);
-  player.rotation.x = Math.PI / 2;
-  player.position.set(0, 0.4, 2.2);
+  const player = new THREE.Group();
+  const craft = new THREE.Mesh(
+    new THREE.ConeGeometry(0.85, 1.6, 3),
+    new THREE.MeshBasicMaterial({ color: 0xd6ff3f })
+  );
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(0.95, 0.08, 8, 24),
+    new THREE.MeshBasicMaterial({ color: 0x00ffa8 })
+  );
+  ring.rotation.x = Math.PI / 2;
+  ring.position.y = 0.05;
+  craft.position.y = 0.8;
+  player.add(craft);
+  player.add(ring);
+  player.position.set(0, 0, 1.2);
   scene.add(player);
+  const beacon = new THREE.PointLight(0xd6ff3f, 12, 8);
+  beacon.position.set(0, 1.2, 1.2);
+  scene.add(beacon);
 
   const ideaGeo = new THREE.OctahedronGeometry(0.42, 0);
   const ideaMat = new THREE.MeshStandardMaterial({
@@ -154,7 +164,7 @@ async function bootGame() {
     spawnAcc = 0;
     setLane(1);
     player.position.x = 0;
-    player.position.z = 2.2;
+    player.position.z = 1.2;
     winEl.classList.add("hidden");
     loseEl.classList.add("hidden");
     runWrap.classList.remove("hidden");
@@ -200,7 +210,9 @@ async function bootGame() {
     last = now;
     if (hidden) return;
     player.position.x += (targetX - player.position.x) * Math.min(1, dt * 14);
-    player.rotation.z = (targetX - player.position.x) * 0.2;
+    player.rotation.z = (targetX - player.position.x) * 0.15;
+    beacon.position.x = player.position.x;
+    beacon.position.z = player.position.z;
     if (!running) {
       renderer.render(scene, camera);
       return;
